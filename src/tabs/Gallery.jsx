@@ -11,6 +11,7 @@ export const Gallery = () => {
   const [isEmpting, setIsEmpting] = useState(false);
   const [isError, setIsError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [largeURL, setLargeURL] = useState('');
 
   const handleSubmit = value => {
     console.log(value);
