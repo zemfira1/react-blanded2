@@ -1,3 +1,9 @@
+import { Overlay } from 'components/Overlay/Overlay.styled';
+
 export const Modal = ({ imageLink }) => {
-  return <img src={imageLink} alt="" />;
+  return (
+    <Overlay>
+      <img src={imageLink} alt="" />
+    </Overlay>
+  );
 };
