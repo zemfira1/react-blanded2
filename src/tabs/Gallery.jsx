@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, SearchForm, Grid, GridItem, Text, CardItem } from 'components';
 import { getImages } from 'service/image-service';
 import { Loader } from 'components/Loader/Loader';
+import { Modal } from 'components/Modal/Modal';
 
 export const Gallery = () => {
   const [query, setQuery] = useState('');
@@ -42,6 +43,10 @@ export const Gallery = () => {
     setPage(prevPage => prevPage + 1);
   };
 
+  const openModal = url => {
+    setLargeURL(url);
+  };
+
   return (
     <>
       <SearchForm handleSubmit={handleSubmit} />
@@ -49,7 +54,11 @@ export const Gallery = () => {
         {dataImages.map(({ id, avg_color, alt, src }) => (
           <GridItem key={id}>
             <CardItem color={avg_color}>
-              <img src={src.large} alt={alt} />
+              <img
+                src={src.large}
+                alt={alt}
+                onClick={() => openModal(src.large2x)}
+              />
             </CardItem>
           </GridItem>
         ))}
@@ -64,6 +73,7 @@ export const Gallery = () => {
       )}
       {isError && <Text textAlign="center">Sorry. {isError} 😭</Text>}
       {isLoading && <Loader />}
+      {largeURL && <Modal imageLink={largeURL} closeModal={openModal} />}
     </>
   );
 };
