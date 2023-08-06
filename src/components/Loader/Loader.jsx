@@ -1,4 +1,4 @@
-import { Overlay } from './Loader.styled';
+import { Overlay } from 'components/Overlay/Overlay.styled';
 import { RingLoader } from 'react-spinners';
 
 export const Loader = () => {
